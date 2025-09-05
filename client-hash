@@ -1,0 +1,5 @@
+// reality host
+vless://885e8229-14bd-4e53-985c-33f96015ca43@localhost:8843?encryption=none&security=reality&sni=wwwqa.microsoft.com&alpn=h3%2Ch2%2Chttp%2F1.1&fp=chrome&pbk=zyg4f-OTcvLZgtRAATYDmSC8r9w3K92aiJpudzEr1lw&spx=%2Fsad&type=xhttp&path=%2FCH7icB5xa9jY7B2o&mode=auto#lcr
+
+//tls sni + host
+vless://885e8229-14bd-4e53-985c-33f96015ca43@localhost:443?encryption=none&security=tls&sni=localhost&alpn=h2&fp=chrome&pbk=-bhOQOhmKh3MPBCfKcla3Cu5Waz0dNT0Fn4vdOVEIQs&sid=4609d4711281ac9c&spx=%2F&type=xhttp&path=%2FCH7icB5xa9jY7B2o&mode=auto#localhost
