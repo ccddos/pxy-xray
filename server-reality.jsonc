@@ -20,6 +20,20 @@
                 "xhttpSettings": {
                     "mode": "auto", //如在 config.jsonc 使用 downloadSettings（下行），不可用 stream-one；可用 stream-up。
                     "path": "/CH7icB5xa9jY7B2o" // 填写你的 path
+                },
+                 "security": "reality",
+                "realitySettings": {
+                    // 此target字段原名为dest，从24.10.31版本开始开始使用新名称。
+	                    // 目标网站最低标准：国外网站，支持 TLSv1.3 与 H2，域名非跳转用（主域名可能被用于跳转到 www）。详见 https://github.com/XTLS/REALITY
+                    "target": "www.microsoft.com:443",
+                    "serverNames": [
+                    "wwwqa.microsoft.com", "staticview.microsoft.com"
+                    ],
+                    "privateKey": "GDG8WZEBlgi1T7jIoZi2RCEz7PYnCgR2Np-MMNasgUI", // 执行 xray x25519 生成，填 "Private key" 的值
+                    "shortIds": [ // 客户端可用的 shortId 列表，可用于区分不同的客户端
+                   ""
+                    ]
+                
                 }
             },
             "sniffing": {
