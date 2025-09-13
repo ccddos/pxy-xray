@@ -1,4 +1,4 @@
-FROM ghcr.io/xtls/xray-core:25.8.3
+FROM ghcr.io/xtls/xray-core:latest
 
 EXPOSE 8843
 
