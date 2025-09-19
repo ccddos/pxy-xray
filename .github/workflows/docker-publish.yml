@@ -31,12 +31,21 @@ jobs:
     strategy:
       matrix:
         include:
-          - name: tls
-            dockerfile: Dockerfile
-            tag: tls
+          - name: base
+            config_type: base
+            tag: base
+            additional_tag: xhttp
+            legacy_tag: tls
+          - name: httpupgrade
+            config_type: up
+            tag: up
+            additional_tag: httpupgrade
+            legacy_tag: ""
           - name: reality
-            dockerfile: Dockerfile-reality
+            config_type: reality
             tag: reality
+            additional_tag: ""
+            legacy_tag: ""
     permissions:
       contents: read
       packages: write
@@ -87,10 +96,14 @@ jobs:
         uses: docker/build-push-action@0565240e2d4ab88bba5387d719585280857ece09 # v5.0.0
         with:
           context: .
-          file: ${{ matrix.dockerfile }}
+          file: Dockerfile
+          build-args: |
+            CONFIG_TYPE=${{ matrix.config_type }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ matrix.tag }}
+            ${{ matrix.additional_tag && format('{0}/{1}:{2}', env.REGISTRY, env.IMAGE_NAME, matrix.additional_tag) || '' }}
+            ${{ matrix.legacy_tag && format('{0}/{1}:{2}', env.REGISTRY, env.IMAGE_NAME, matrix.legacy_tag) || '' }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
