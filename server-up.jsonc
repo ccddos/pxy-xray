@@ -1,6 +1,6 @@
 {
     "log": {
-        "loglevel": "warning"
+        "loglevel": "debug"
     },
     "inbounds": [
         {
@@ -17,7 +17,11 @@
             },
             "streamSettings": {
                 "network": "httpupgrade",
-                "path": "/CH7icB5xa9jY7B2o" // 填写你的 path
+                // "path": "/sad" // 填写你的 path
+                "httpUpgradeSettings": {
+                    // "host": "domain.com",
+                    "path": "/CH7icB5xa9jY7B2o"
+                }
                 
             },
             "sniffing": {

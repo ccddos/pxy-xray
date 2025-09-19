@@ -9,7 +9,7 @@ COPY server.jsonc /configs/server-base.jsonc
 COPY server-up.jsonc /configs/server-up.jsonc  
 COPY server-reality.jsonc /configs/server-reality.jsonc
 
-FROM ghcr.io/xtls/xray-core:25.8.3
+FROM ghcr.io/xtls/xray-core:25.9.11
 
 # 重新声明ARG以在此阶段使用
 ARG CONFIG_TYPE=base
