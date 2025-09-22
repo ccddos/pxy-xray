@@ -1,0 +1,94 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "dns": {
+    "servers": [
+      {
+        "address": "https://dns.alidns.com/dns-query",
+        "domains": [
+          "geosite:cn"
+        ],
+        "skipFallback": true
+      },
+      "https://cloudflare-dns.com/dns-query"
+    ]
+  },
+  "inbounds": [
+    {
+      "tag": "socks",
+      "port": 10808,
+      "listen": "0.0.0.0",
+      "protocol": "mixed",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": ["http", "tls"]
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "20.36.5.8",
+            "port": 8843,
+            "users": [
+              {
+                "id": "885e8229-14bd-4e53-985c-33f96015ca43",
+                "email": "t@t.tt",
+                "security": "auto",
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "xhttp",
+        "security": "reality",
+        "xhttpSettings": {
+          "path": "/CH7icB5xa9jY7B2o",
+          "mode": "auto"
+        },
+        "realitySettings": {
+          "serverName": "wwwqa.microsoft.com",
+          "fingerprint": "chrome",
+          "show": false,
+          "publicKey": "zyg4f-OTcvLZgtRAATYDmSC8r9w3K92aiJpudzEr1lw",
+          "shortId": "",
+          "spiderX": "/sad"
+        }
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": ["socks"],
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:cn",
+          "geoip:private"
+        ]
+      },
+      {
+        "type": "field",
+        "inboundTag": ["socks"],
+        "outboundTag": "proxy"
+      }
+    ]
+  }
+}

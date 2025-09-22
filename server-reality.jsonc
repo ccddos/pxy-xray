@@ -68,13 +68,7 @@
                 ],
                 "outboundTag": "block"
             },
-            {
-                "type": "field",
-                "domain": [
-                    "geosite:cn"
-                ],
-                "outboundTag": "block"
-            },
+
             {
                 "type": "field",
                 "ip": [
